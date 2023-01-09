@@ -7,3 +7,7 @@ class SubscriptionForms(forms.Form):
     email = forms.EmailField()
     password = forms.CharField(max_length=100,widget=forms.PasswordInput)
     repeatPassWord = forms.CharField(max_length=100,widget=forms.PasswordInput)
+
+class Sign_in(forms.Form):
+    username = forms.CharField(max_length=20)
+    password = forms.CharField(max_length=100,widget=forms.PasswordInput)
