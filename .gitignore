@@ -1,0 +1,8 @@
+# python venv
+env_osiris
+
+# macIOS
+.DS_Store
+
+# vscode
+.vscode
