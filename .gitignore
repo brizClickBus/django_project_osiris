@@ -6,3 +6,6 @@ env_osiris
 
 # vscode
 .vscode
+
+# djago
+__pycache__
