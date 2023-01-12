@@ -1,41 +1,46 @@
 {% extends 'home_base.html'%}
 {% load widget_tweaks %}
+{% load static %}
 
 {% block title%}
     sign_in | osiris
 {% endblock %}
 
 {% block content %}
-<div style="position: absolute; top: 30px;font-weight: bold;color: #fff;">
-    OSIRIS
-</div>
-
-<div class="card text-center" style="width: 40%; padding: 20px 10px; border-radius: 10px;">
+<div id="card_body" class="card text-center fadeIn first row 1" style="width: 40%; padding: 20px 10px; border-radius: 10px;position: static">
     <div class="card-body" >
-      <h5 class="card-title">Seja bem-vindo!</h5>
-      
-      <form action="{% url 'login'%}" method="POST" >
-        
-        <div style="padding: 20px;">
-            {% csrf_token %}
-            <div style="margin-bottom: 2rem;">
-                {%render_field   sign_in.username  placeholder="USERNAME" name="username"%}
-            </div>
-            <div style="margin-bottom: 1rem;">
-                {%render_field sign_in.password placeholder="SENHA" name="password"%}
-            </div>
+    
+    
+        <h5 class="card-title">Seja bem-vindo!</h5>
+        <form action="{% url 'login'%}" method="POST" >
+            
+            <div class="fadeIn third"  style="padding: 20px;">
+                {% csrf_token %}
+                <div style="margin-bottom: 2rem;">
+                    {%render_field   sign_in.username  placeholder="USERNAME" name="username"%}
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    {%render_field sign_in.password placeholder="SENHA" name="password"%}
+                </div>
             </div >
+            
+            <div>
                 <button id="fadeInfourth" Class="form-btn" type="submit">ACESSAR</button>
             </div>
-
-            <a style="font-size: 12px; text-decoration: none;color:#fe2f8c;margin-bottom:1rem;">CADASTRAR-SE</a>
-
+            
+            <a  class="sign_up" href="{% url 'sign_up'%}">CADASTRAR-SE</a>
+            
         </div>
-    
+        
     </form>
-<div>Descomplique sua vida financeira</div>
-
-
-    </div>
-  </div>
+</div>
+</div>
 {% endblock%}
+
+{%block leg%}
+    DESCOMPLICANDO SUA VIDA FINANCEIRA
+{%endblock%}
+
+<script
+ src='{% static "home/main.js" %}' language="JavaScript" type="text/javascript"  >
+</script>

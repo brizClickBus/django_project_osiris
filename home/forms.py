@@ -1,6 +1,6 @@
 from django import forms
 
-class SubscriptionForms(forms.Form):
+class Sign_up(forms.Form):
     first_name = forms.CharField(max_length=20)
     last_name = forms.CharField(max_length=20)
     username = forms.CharField(max_length=20)

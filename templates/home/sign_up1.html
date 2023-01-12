@@ -1,0 +1,39 @@
+{% extends 'home_base.html'%}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title%}
+    sign_up | osiris
+{% endblock %}
+
+{% block content %}
+<svg style="float:rigth;margin:0auto;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clipboard2-check-fill" viewBox="0 0 16 16">
+    <path d="M10 .5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5.5.5 0 0 1-.5.5.5.5 0 0 0-.5.5V2a.5.5 0 0 0 .5.5h5A.5.5 0 0 0 11 2v-.5a.5.5 0 0 0-.5-.5.5.5 0 0 1-.5-.5Z"/>
+    <path d="M4.085 1H3.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1h-.585c.055.156.085.325.085.5V2a1.5 1.5 0 0 1-1.5 1.5h-5A1.5 1.5 0 0 1 4 2v-.5c0-.175.03-.344.085-.5Zm6.769 6.854-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+</svg>
+<div style="color:rgb(254, 43, 143);font-weight: bold;">CADASTRO</div>
+<div style="float:center;margin:0auto; color:rgb(170, 170, 170);font-weight: bold;">PASSO 2/3</div>
+
+<div class="progress">
+    <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+<form action="{% url 'login'%}" method="POST" >
+    
+    <div style="padding: 20px;">
+    
+        {% csrf_token %}
+        
+        <div style="margin-bottom: 2rem;">
+            {%render_field   sign_up.email  placeholder="E-MAIL" name="first_name"%}
+        </div>
+    
+    </div >
+    
+    <div>
+        <button id="fadeInfourth" Class="form-btn" type="submit">PRÓXIMO</button>
+    </div>
+
+    <a  class="sign_up" href="{% url 'sign_up'%}">VOLTAR</a>
+</form>
+{% endblock%}

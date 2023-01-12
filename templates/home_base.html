@@ -17,8 +17,17 @@
     <title>{% block title%}{% endblock %}</title>
 </head>
 <body class="body">
-    {%block content%}
+
+        <div class="row" style="position: absolute; top: 30px;font-weight: bold;color: #fff; margin-bottom: 10px;">
+            <img src='{% static "/img/home_signIn2.png" %}' height="200" width="200px">
+        </div>
+        {%block content%}
+        {%endblock%}
+
+    <div class="fadeIn fourth" style="color: #fff;margin-top: 1rem;font-weight: bold;">
+    {%block leg%}
     {%endblock%}
+    </div>
 </body>
 </html>
 <script
