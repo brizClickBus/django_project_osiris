@@ -1,17 +1,7 @@
-from django.shortcuts import render,redirect
-from .forms import Sign_in,Sign_up
-from .models import SignUp
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-def sign_in(request):
-    if request.method == 'POST':
-        pass
 
-    return render(request,'home/sign_in.html',{'sign_in':Sign_in()})
-
-def sign_out(request):
-    if request.method == 'POST':
-        pass
-
-def sign_up(request):
-    return render(request,'home/sign_up.html',{'sign_up':Sign_up()})
+@login_required
+def home(request):
+    return render(request,'home/home.html')

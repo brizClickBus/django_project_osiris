@@ -1,4 +1,4 @@
-{% extends 'home_base.html'%}
+{% extends 'users_base.html'%}
 {% load widget_tweaks %}
 {% load static %}
 
@@ -10,8 +10,12 @@
 <div id="card_body" class="card text-center fadeIn first row 1" style="width: 40%; padding: 20px 10px; border-radius: 10px;position: static">
     <div class="card-body" >
     
-    
-        <h5 class="card-title">Seja bem-vindo!</h5>
+        {%if bem_vindo%}
+            <h5 class="card-title">{{bem_vindo.message}}</h5>
+        {%else%}    
+            <h5 class="card-title">Seja bem-vindo!</h5>
+        {%endif%}
+
         <form action="{% url 'login'%}" method="POST" >
             
             <div class="fadeIn third"  style="padding: 20px;">

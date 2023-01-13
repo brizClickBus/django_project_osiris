@@ -1,4 +1,4 @@
-{% extends 'home_base.html'%}
+{% extends 'users_base.html'%}
 {% load widget_tweaks %}
 {% load static %}
 
@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-<div id="card_body" class="card text-center fadeIn first row 1" style="width: 40%; padding: 20px 10px; border-radius: 10px;margin-top: 8rem;">
+<div id="card_body" class="card text-center fadeIn first row 1" style="width: 40%; padding: 20px 10px; border-radius: 10px;margin-top: 15rem;">
     <div class="card-body" >
             <svg style="float:rigth;margin:0auto;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clipboard2-check-fill" viewBox="0 0 16 16">
                 <path d="M10 .5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5.5.5 0 0 1-.5.5.5.5 0 0 0-.5.5V2a.5.5 0 0 0 .5.5h5A.5.5 0 0 0 11 2v-.5a.5.5 0 0 0-.5-.5.5.5 0 0 1-.5-.5Z"/>
@@ -28,10 +28,15 @@
                     <div style="margin-bottom: 1rem;">
                         {%render_field sign_up.last_name placeholder="sobrenome" name="last_name" onclick="clickOffPss()"%}
                     </div>
-
+                    
+                    <div style="margin-bottom: 1rem;">
+                        {%render_field sign_up.username placeholder="username" name="username" onclick="clickOffPss()"%}
+                    </div>
+                    
                     <div style="margin-bottom: 1rem;">
                         {%render_field sign_up.email placeholder="E-MAIL" name="email" onclick="clickOffPss()"%}
                     </div>
+
                     <div style="margin-bottom: 1rem;">
                         {%render_field sign_up.password placeholder="senha" id="password" name="password" onclick="clickPss()" onkeyup="strongPassword()"%}
                     </div>
@@ -46,22 +51,24 @@
                     </div>
                     <div class="card-body"style="background-color: #f9f9f9 ;">
 
-                        <div class="password0" id="maior8">Maior que 8 caracteres...</div>
-                    
+                        <div class="password0" id="letraMaiu">Possuir uma ou mais letras maiúsculas...</div>
+                        
+                        <div class="password0" id="caractere">Possuir um ou mais caractere especial...</div>
+                        
+                        <div class="password0" id="numero">Possuir um ou mais números...</div>
+                        
                         <div class="password0" id="letra">Possuir uma ou mais letras...</div>
 
-                        <div class="password0" id="letraMaiu">Possuir uma ou mais letras maiúsculas...</div>
+                        <div class="password0" id="maior8">Maior que 8 caracteres...</div>
 
-                        <div class="password0" id="numero">Possuir um ou mais números...</div>
 
-                        <div class="password0" id="caractere">Possuir um ou mais caractere especial...</div>
                     
                     </div>
                     
                     <div class="card-footer text-muted" id="progressBar" style="background-color:rgb(255, 110, 96) ;"></div>
                 
                 </div>
-                
+                {% include "_alertas.html" %}
                 <div>
                     <button id="fadeIn fourth" Class="form-btn" type="submit">PRÓXIMO</button>
                 </div>
