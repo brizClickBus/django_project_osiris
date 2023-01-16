@@ -11,7 +11,7 @@ def sign_in(request):
         
         if username =="" or password == "":
             messages.error(request, 'Os campos email e senha não podem ficar em branco')
-            return redirect('sign_in')
+            return render(request,'users/sign_in.html',{'sign_in':Sign_in()})
         
         if User.objects.filter(username=username).exists():
             user = auth.authenticate(request, username=username, password=password)
@@ -20,13 +20,14 @@ def sign_in(request):
                 return redirect('home')
         else:
             messages.error(request,'Usuário não cadastrado')
-            return redirect('sign_in') 
+            return render(request,'users/sign_in.html',{'sign_in':Sign_in()})
+    messages.success(request,"Seja Bem-vindo!")
     return render(request,'users/sign_in.html',{'sign_in':Sign_in()})
 
 def sign_out(request):
-    if request.method == 'POST':
-        pass
-
+    auth.logout(request)
+    messages.error(request,'Espero ter ajudado!')
+    return render(request,'users/sign_in.html',{'sign_in':Sign_in()})
 def sign_up(request):
     if request.method == 'POST':
         first_name = request.POST['first_name']
@@ -92,8 +93,8 @@ def sign_up(request):
                     last_name=last_name,
                     email=email,
                     password=password)
-                context = {"message":f"Bem vindo, {first_name} {last_name}, fico feliz que você escolheu o Osiris para tomar conta do seu dinheiro!"}
-                return render(request,'users/sign_in.html',{'sign_in':Sign_in(),"bem_vindo":context})
+                messages.success(request,f"Bem vindo, {first_name} {last_name}, fico feliz que você escolheu o Osiris para tomar conta do seu dinheiro!")
+                return render(request,'users/sign_in.html',{'sign_in':Sign_in()})
         except:
             messages.error(request,"Problemas na criação do seu cadastro, por gentileza atualize a pagina e tente novamente")
             return render(request,'users/sign_up.html',{'sign_up':Sign_up()})

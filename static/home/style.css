@@ -1,0 +1,15 @@
+.dark-background{
+    background: #f3e1e6;
+    overflow: hidden;
+    width: 100%;
+}
+
+.saldo{
+    font-size: 18px;
+}
+
+.circle:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.112); 
+  }
