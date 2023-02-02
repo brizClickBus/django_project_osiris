@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from pathlib import Path
-from django.contrib.messages import constants as messages
 
 import pymysql
+from django.contrib.messages import constants as messages
 
 pymysql.install_as_MySQLdb()
 
@@ -45,8 +45,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
+    'fuel.apps.FuelConfig',
     'users.apps.UsersConfig',
+    'extrato.apps.ExtratoConfig',
     'widget_tweaks',
+    'django_bootstrap_icons',
 ]
 
 MIDDLEWARE = [

@@ -1,6 +1,7 @@
 {% extends 'users_base.html'%}
 {% load widget_tweaks %}
 {% load static %}
+{% load bootstrap_icons %}
 
 {% block title%}
     sign_in | osiris
@@ -9,20 +10,25 @@
 {% block content %}
 <div id="card_body" class="card text-center fadeIn first row 1" style="width: 40%; padding: 20px 10px; border-radius: 10px;position: static">
     <div class="card-body" >
-    
         {% include "_alertas.html" %}
 
         <form action="{% url 'sign_in'%}" method="POST" >
             
             <div class="fadeIn third"  style="padding: 20px;">
                 {% csrf_token %}
-                <div style="margin-bottom: 2rem;">
-                    
-                    {%render_field   sign_in.username  placeholder="USERNAME" name="username"%}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">{% bs_icon 'person'  size='1.5em' %}</span>
+                    </div>
+                    {%render_field   sign_in.username  type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"%}
                 </div>
-                <div style="margin-bottom: 1rem;">
-                    {%render_field sign_in.password placeholder="SENHA" name="password"%}
-                </div>
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">{% bs_icon 'unlock-fill'  size='1.5em' %}</span>
+                    </div>
+                    {%render_field   sign_in.password  type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"%}
+                  </div>
             </div >
             
             <div>

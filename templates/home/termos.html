@@ -1,0 +1,79 @@
+{% extends 'primeroacesso.html'%}
+{% load widget_tweaks %}
+{% load static %}
+
+{%block title%}
+  Osiris | Termos
+{%endblock%}
+
+{%block content%}
+<div class="card fadeIn first" style="margin-top: 15rem;">
+  <div class="card-body">
+    <h5 class="card-title" style=" display: flex;align-items: center;justify-content: center;height: 100%;font-weight: bold;">Termos de uso e política de compartilhamento de dados</h5>
+    <div style="border-bottom: 2px solid #eb7600;"></div>
+    
+    <p class="card-text" style="margin-top: 1rem;">
+      
+      <p>
+        A seguir, descrevemos nossas práticas de coleta, uso, armazenamento e compartilhamento de informações pessoais.<br> 
+        Essa política se aplica a todos os usuários do nosso site, serviços e produtos.<br>
+      </p>
+      
+      <p>
+        <div class="subtitulo">Coleta de informações pessoais</div><br>
+        Coletamos informações pessoais quando você se inscreve em nossos serviços, preenche formulários ou entra em <br>
+        contato conosco. As informações que coletamos incluem seu nome, endereço de e-mail, endereço postal, número de <br>telefone e informações de pagamento.<br>
+      </p>
+
+      <p>
+        <div class="subtitulo">Uso de informações pessoais</div><br>
+        Usamos as informações que coletamos para fornecer e melhorar nossos serviços, enviar comunicações relacionadas <br>
+        aos nossos serviços, incluindo atualizações de produtos e ofertas especiais.<br>
+      </p>
+
+      <p>
+        <div class="subtitulo">Armazenamento de informações pessoais </div><br>
+        Armazenamos suas informações pessoais de forma segura e protegida. Apenas autorizadas pessoas têm acesso às <br>
+        informações, e todos as informações sensíveis são criptografadas <br>
+      </p>
+      
+      <p>
+        <div class="subtitulo">Compartilhamento de informações pessoais</div><br>
+        Não vendemos, trocamos ou compartilhamos suas informações pessoais com terceiros, exceto quando necessário para <br>
+        fornecer nossos serviços ou conforme exigido por lei.<br>
+      </p>    
+
+      <p>
+        <div class="subtitulo">Segurança de informações pessoais</div><br>
+        Tomamos medidas de segurança para proteger suas informações pessoais contra a perda, o roubo ou o acesso não <br>
+        autorizado.<br>
+      </p>
+
+      <p>
+        <div class="subtitulo">Alterações na política de privacidade</div><br>
+        Reservamos o direito de modificar essa política a qualquer momento. Publicaremos todas as alterações em nosso <br>
+        site e, se as alterações forem significativas, forneceremos um aviso por e-mail.<br>
+      </p>
+          
+    </p>
+    <div style="border-bottom: 2px solid #eb7600;margin-top: 1rem;margin-bottom: 1rem; "></div>
+    <div class="center">
+      <form action="{% url 'termos'%}" method="POST" >
+        {% csrf_token %}
+        {% include "_alertas.html" %}
+        <div style="margin-left: 1px;" class="form-check">
+          {%render_field   termos.aceite  type="checkbox" class="form-check-input" placeholder="aceite"%}
+          <!-- <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"> -->
+          <label class="form-check-label" for="defaultCheck1">
+            Aceito os termos e condições
+          </label>
+        </div>
+        <div style="margin-top: 1rem;">
+          <button id="fadeInfourth" Class="form-btn" type="submit">PRÓXIO</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+{%endblock%}
