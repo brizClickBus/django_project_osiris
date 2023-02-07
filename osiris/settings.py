@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'fuel.apps.FuelConfig',
     'users.apps.UsersConfig',
+    'cadastrarInfos.apps.CadastrarinfosConfig',
+    'banco.apps.BancoConfig',
     'extrato.apps.ExtratoConfig',
     'widget_tweaks',
     'django_bootstrap_icons',
@@ -89,7 +91,7 @@ WSGI_APPLICATION = 'osiris.wsgi.application'
 DATABASES = {  
     'default': {  
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "django_project_osiris",
+        "NAME": "osiris_finance",
         "USER": "root",
         "PASSWORD": "4920@Briz",
         "HOST": "127.0.0.1",

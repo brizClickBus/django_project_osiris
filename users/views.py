@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from .forms import Sign_in,Sign_up
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
+from home.models import Termos
+
 # Create your views here.
 def sign_in(request):
     if request.method == 'POST':
@@ -13,11 +15,16 @@ def sign_in(request):
             messages.error(request, 'Os campos email e senha não podem ficar em branco')
             return render(request,'users/sign_in.html',{'sign_in':Sign_in()})
         
-        if User.objects.filter(username=username).exists():
+        user = User.objects.filter(username=username)
+        if user.exists():
             user = auth.authenticate(request, username=username, password=password)
             if user is not None:
                 auth.login(request, user)
-                return redirect('home')
+                userid = user.id
+                if Termos.objects.filter(user_id=userid).exists():
+                    return redirect('home')
+                else:
+                    return redirect('termos')
         else:
             messages.error(request,'Usuário não cadastrado')
             return render(request,'users/sign_in.html',{'sign_in':Sign_in()})

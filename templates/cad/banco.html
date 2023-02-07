@@ -1,0 +1,85 @@
+{% extends 'primeroacesso.html'%}
+{% load widget_tweaks %}
+{% load static %}
+{% load bootstrap_icons %}
+
+{%block title%}
+  Osiris | Banco
+{%endblock%}
+
+{%block content%}
+<div class="card fadeIn first" style="margin-top: 10rem;">
+  <div class="card-body">
+    <h5 class="card-title" style=" display: flex;align-items: center;justify-content: center;height: 100%;font-weight: bold;">
+    Vamos cadastrar seus bancos
+    </h5>
+    <div style="border-bottom: 2px solid #eb7600; margin-bottom: 1rem;"></div>
+    <h6 class="card-subtitle mb-2 text-muted">
+      Cadastre todos os seus bancos ou apenas alguns<br>
+      É necessario cadastrar pelo menos um banco para conseguir proseguir..
+    </h6>
+   
+    <div class="center">
+      <form action="{% url 'cad_banco' %}" method="POST" >
+       
+        {% csrf_token %}
+       
+        {% include "_alertas.html" %}
+        {%if bancoforms%}
+
+          <div>
+              <label for="nomebanco">Nome do banco</label>
+              {%render_field   bancoforms.nomebanco id="bancosCadastrados-autocomplete"  type="text" class="form-control" placeholder="Banco do Brasil"%}
+              <label for="descricao">Descrição</label>
+              {%render_field   bancoforms.descricao id="descricao"   type="text" class="form-control" placeholder="Banco onde recebo meu sálario"%}
+          </div>
+
+        {%endif%}
+        <div class="row">
+          <div class="col"  style="margin-top: 1rem;">
+            <input  name="save_banco_and_add_another" style="width: 15rem;" id="saveAdd" Class="form-btn" type="submit" value="Salvar e cadastrar outro">
+          </div>
+
+        </div>
+      
+      </form>
+      {%if bancosSalvos%}
+        <div style="border-bottom: 2px solid #b0afad; margin-bottom: 1rem;margin-top: 2rem;"></div>
+        <h5 class="card-title" style=" display: flex;align-items: center;justify-content: center;height: 100%;font-weight: bold;">
+          Bancos cadastrados
+        </h5>
+        <div style="border-bottom: 2px solid #eb7600;"></div>
+        <div id="mudarTamanho" class="table-responsive-xl overflow-auto border rounded">
+          <table class="table table-striped">
+            <thead >
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in bancosSalvos %}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ item.nomebanco }}</td>
+                <td>{{ item.descricao }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+          <div id="tamanhoTh">
+            {{height}}
+          </div>
+          <div class="col"  style="margin-top: 1rem;">
+            <a href="{% url 'cad_cartoes' %}"  Class="form-btn next" >PRÓXIMO</a>
+          </div>
+      {%endif%}
+      
+    </div>
+    
+  </div>
+</div>
+<script src='{% static "cad/js/bancos.js" %}' language="JavaScript" type="text/javascript"  ></script>
+{%endblock%}
